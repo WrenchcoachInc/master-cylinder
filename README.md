@@ -1,13 +1,11 @@
-# Wrenchcoach State Machine
-
-
-[![npm](https://img.shields.io/npm/v/@zeainc/zea-engine?style=flat-square)](https://www.npmjs.com/package/@zeainc/zea-engine)
-[![Code style: Prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
-
-## Docs
-
+# Wrenchcoach Master Cylinder Demo
 
 ## Getting started
+
+Install dependencies. 
+  * Install yarn
+  * Run `yarn install`
+
 
 clone the following repositories
 
