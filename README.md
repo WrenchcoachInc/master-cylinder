@@ -2,7 +2,9 @@
 
 ## Getting started
 
-Install dependencies. 
+### Install git lfs
+
+### Install dependencies. 
   * Install yarn
   * Run `yarn install`
 
