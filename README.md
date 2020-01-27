@@ -31,7 +31,8 @@ clone the following repositories
 run the server. 
 
 Launch the various pages.
-http://127.0.0.21:8080/?stage=identification
-http://127.0.0.21:8080/?stage=simulation
+ * http://127.0.0.21:8080/?stage=identification
+ * http://127.0.0.21:8080/?stage=simulation
+ * http://127.0.0.21:8080/?stage=assembly
 
 
