@@ -119,7 +119,7 @@ function setupSimulator(scene, asset, renderer, appData) {
 
   const primaryColor = new ZeaEngine.Color('#FBC02D');
   
-  const target0LocatorItem = new LocatorItem("target0LocatorItem");
+  const target0LocatorItem = new LocatorItem.LocatorItem("target0LocatorItem");
   {
     const xfo = new ZeaEngine.Xfo();
     xfo.tr.set(0.0, 0.0, 0.0)
@@ -169,7 +169,7 @@ function setupSimulator(scene, asset, renderer, appData) {
   
   
   {
-    const locatorItem = new LocatorItem("BrakePedalLocator");
+    const locatorItem = new LocatorItem.LocatorItem("BrakePedalLocator");
     locatorItem.getParameter("GlobalXfo").setValue(xfo)
     locatorItem.getParameter("Size").setValue(locatorSizeScale * 0.1)
     locatorItem.getParameter("Visible").setValue(locatorVisible)
@@ -182,7 +182,7 @@ function setupSimulator(scene, asset, renderer, appData) {
   }
   // return;
 
-  const pushRodLocatorItem = new LocatorItem("pushRodLocatorItem");
+  const pushRodLocatorItem = new LocatorItem.LocatorItem("pushRodLocatorItem");
   {
     const xfo = new ZeaEngine.Xfo();
     xfo.tr.set(0.0, 0.137, 0.0)
@@ -207,7 +207,7 @@ function setupSimulator(scene, asset, renderer, appData) {
   }
 
 
-  const railLocatorItem = new LocatorItem("railLocatorItem");
+  const railLocatorItem = new LocatorItem.LocatorItem("railLocatorItem");
   {
     const xfo = new ZeaEngine.Xfo();
     xfo.tr.set(0.0, -0.03, 0.0)
@@ -240,7 +240,7 @@ function setupSimulator(scene, asset, renderer, appData) {
   
 
   {
-    const locatorItem0 = new LocatorItem("locatorItem0");
+    const locatorItem0 = new LocatorItem.LocatorItem("locatorItem0");
     const xfo0 = railLocatorItem.getParameter("GlobalXfo").getValue().clone()
     xfo0.tr.set(0.0, -0.14, 0.0)
     locatorItem0.getParameter("GlobalXfo").setValue(xfo0)
@@ -249,7 +249,7 @@ function setupSimulator(scene, asset, renderer, appData) {
     railLocatorItem.addChild(locatorItem0);
 
 
-    const secondaryPistonLocator = new LocatorItem("secondaryPistonLocator");
+    const secondaryPistonLocator = new LocatorItem.LocatorItem("secondaryPistonLocator");
     const xfo2_5 = railLocatorItem.getParameter("GlobalXfo").getValue().clone()
     xfo2_5.tr.set(0.0, -0.212, 0.0)
     secondaryPistonLocator.getParameter("GlobalXfo").setValue(xfo2_5)
@@ -258,7 +258,7 @@ function setupSimulator(scene, asset, renderer, appData) {
     asset.addChild(secondaryPistonLocator);
     
 
-    const locatorItem3 = new LocatorItem("locatorItem3");
+    const locatorItem3 = new LocatorItem.LocatorItem("locatorItem3");
     const xfo3 = railLocatorItem.getParameter("GlobalXfo").getValue().clone()
     xfo3.tr.set(0.0, -0.288, 0.0)
     locatorItem3.getParameter("GlobalXfo").setValue(xfo3)
@@ -280,7 +280,7 @@ function setupSimulator(scene, asset, renderer, appData) {
     secondaryPistonGroup.addItem(asset.resolvePath([".", "SJ Cilindro MESTRE", "bucha_guia"]));
     secondaryPistonLocator.addChild(secondaryPistonGroup);
 
-    const locatorItem1 = new LocatorItem("locatorItem1");
+    const locatorItem1 = new LocatorItem.LocatorItem("locatorItem1");
     const xfo1 = railLocatorItem.getParameter("GlobalXfo").getValue().clone()
     xfo1.tr.set(0.0, -0.188, 0.0)
     locatorItem1.getParameter("GlobalXfo").setValue(xfo1)
@@ -289,7 +289,7 @@ function setupSimulator(scene, asset, renderer, appData) {
     secondaryPistonLocator.addChild(locatorItem1);
     
     const spring = asset.resolvePath([".", "SJ Cilindro MESTRE", "mola1"])
-    const locatorItem2 = new LocatorItem("locatorItem2");
+    const locatorItem2 = new LocatorItem.LocatorItem("locatorItem2");
     const xfo2 = new ZeaEngine.Xfo()
     xfo2.ori = spring.getParameter("GlobalXfo").getValue().ori
     xfo2.tr.set(0.0, -0.232, 0.0)
@@ -335,7 +335,7 @@ function setupSimulator(scene, asset, renderer, appData) {
   // Booster spring
   
   {
-    const boosterSpringLocator0 = new LocatorItem("boosterSpringLocator0")
+    const boosterSpringLocator0 = new LocatorItem.LocatorItem("boosterSpringLocator0")
     const xfo0 = railLocatorItem.getParameter("GlobalXfo").getValue().clone()
     xfo0.tr.set(0, -0.112, 0.2)
     boosterSpringLocator0.getParameter("GlobalXfo").setValue(xfo0)
@@ -343,7 +343,7 @@ function setupSimulator(scene, asset, renderer, appData) {
     boosterSpringLocator0.getParameter("Visible").setValue(locatorVisible)
     asset.addChild(boosterSpringLocator0)
 
-    const boosterSpringLocator1 = new LocatorItem("boosterSpringLocator1")
+    const boosterSpringLocator1 = new LocatorItem.LocatorItem("boosterSpringLocator1")
     const xfo1 = railLocatorItem.getParameter("GlobalXfo").getValue().clone()
     xfo1.tr.set(0, -0.045, 0.2)
     boosterSpringLocator1.getParameter("GlobalXfo").setValue(xfo1)

@@ -2,7 +2,7 @@
 
 const displayDebug = false
 function setupPlugAndSocket(asset, name, xfo, radius, slideDist, plugLength, radialConstraint, geomItem, appData, dependentSockets, parent) {
-  const socket = new SocketItem(name, displayDebug);
+  const socket = new SocketAndPlug.SocketItem(name, displayDebug);
   socket.getParameter("GlobalXfo").setValue(xfo)
   socket.getParameter("Size").setValue(radius * 5)
   socket.getParameter("Radius").setValue(radius)
@@ -24,7 +24,7 @@ function setupPlugAndSocket(asset, name, xfo, radius, slideDist, plugLength, rad
   else 
     asset.addChild(socket);
 
-  const plug = new PlugItem(name+"Plug", displayDebug);
+  const plug = new SocketAndPlug.PlugItem(name+"Plug", displayDebug);
   plug.getParameter("Size").setValue(radius * 5)
   plug.getParameter("Length").setValue(plugLength)
   const plugXfo = xfo.clone()
@@ -344,7 +344,7 @@ function setupAssembly(scene, asset, renderer, appData) {
       const color = new ZeaEngine.Color(0, 1, 0, 0.25);
       for (let key in plugs) {
         const p = plugs[key].plug
-        if (p instanceof PlugItem) {
+        if (p instanceof SocketAndPlug.PlugItem) {
           p.getParameter("HighlightColor").setValue(color)
           p.getParameter("HighlightFill").setValue(color.a)
           p.getParameter("Highlighted").setValue(true)
@@ -354,7 +354,7 @@ function setupAssembly(scene, asset, renderer, appData) {
         setTimeout(()=> {
           for (let key in plugs) {
             const p = plugs[key].plug
-            if (p instanceof PlugItem) {
+            if (p instanceof SocketAndPlug.PlugItem) {
               p.getParameter("Highlighted").setValue(false)
             }
           }
@@ -384,8 +384,8 @@ function setupAssembly(scene, asset, renderer, appData) {
       plugXfo.tr = plugsPositions[index];
       plugXfo.tr.y *= 2
       p.getParameter("GlobalXfo").setValue(plugXfo)
-      if (p instanceof PlugItem) {
-        p.state = PlugMode.UNCONNECTED
+      if (p instanceof SocketAndPlug.PlugItem) {
+        p.state = SocketAndPlug.PlugMode.UNCONNECTED
         plugs[key].socket.plugged.connect(()=>{
           plugCout--;
           if (plugCout == 0) {

@@ -19,7 +19,7 @@ function setupIdentification(scene, asset, renderer, appData) {
     labelDatas.forEach(labelData => {
       console.log("createLabels", labelData.name)
       labelData.color = primaryColor
-      const { ballItem } = createLabelAndLine(labelData);
+      const { ballItem } = DOMLabel.createLabelAndLine(labelData);
 
       const handle = new appData.UX.PlanarMovementHandle();
       handle.setGlobalXfo(ballItem.getGlobalXfo())
