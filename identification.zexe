@@ -1,0 +1,4 @@
+﻿function init(scene, renderer, appData) {
+  appData.stage = 'identification'
+  servo_mestre(scene, renderer, appData);
+}

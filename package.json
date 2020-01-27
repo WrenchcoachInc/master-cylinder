@@ -1,0 +1,11 @@
+{
+  "name": "MasterCylinder",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "@zeainc/zea-cad": "^0.0.25",
+    "@zeainc/zea-engine": "^0.0.94",
+    "@zeainc/zea-ux": "^0.0.85"
+  }
+}

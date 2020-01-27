@@ -1,0 +1,2 @@
+*.zcad filter=lfs diff=lfs merge=lfs -text
+*.vlenv filter=lfs diff=lfs merge=lfs -text
