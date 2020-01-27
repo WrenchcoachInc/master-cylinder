@@ -1,0 +1,114 @@
+{
+    "Resovoir": {
+        "En": {
+            "Header": "Fluid Resovoir",
+            "Text": "The brake fluid resovoir is sealed to prevent contamination. The fluid requires periodic inspection."
+        }
+    },
+    "Booster": {
+        "En": {
+            "Header": "Brake Booster",
+            "Text": "The brake booster uses enginne vacume to help you apply the brakes."
+        }
+    },
+    "Cylinder": {
+        "En": {
+            "Header": "Master Cylinder",
+            "Text": "This is a tandem master cylinder. It has 2 pistons, return springs, and ports that manage fluid flow."
+        }
+    },
+    "Pushrod": {
+        "En": {
+            "Header": "Pushrod",
+            "Text": "When you push on the brake pedal, it moves the pushrod forward into the master cylinder."
+        }
+    },
+
+    "PressureChamber": {
+        "En": {
+            "Header": "Pressure Chamber",
+            "Text": "There is a pressure chamber full of fluid in front of each piston."
+        }
+    },
+    "SecondaryPiston": {
+        "En": {
+            "Header": "Secondary Piston",
+            "Text": "The secondary piston only pushes oil to half the curcuit"
+        }
+    },
+    "PrimaryPiston": {
+        "En": {
+            "Header": "Primary Piston",
+            "Text": "The primary piston pushes oil to half the brake curcuit and to the secondary piston."
+        }
+    },
+    "VentPort": {
+        "En": {
+            "Header": "Vent Port",
+            "Text": "Fluid from the resovoir fills the brake circuit through the vent port. It also allows the fluid to expand into the resovoir when it gets hot"
+        }
+    },
+    "ReplenishingPort": {
+        "En": {
+            "Header": "Replenishing Port",
+            "Text": "The replenishing port keeps the volume behind the piston filled with brake fluid as it moved forward while braking."
+        }
+    },
+
+    "ResovoirS": {
+        "En": {
+            "Header": "Fluid Resovoir"
+        },
+        "Jp": {
+            "Header": "液体リザーバー"
+        }
+    },
+    "PushrodS": {
+        "En": {
+            "Header": "Pushrod"
+        },
+        "Jp": {
+            "Header": "プッシュロッド"
+        }
+    },
+    "SecondaryPistonS": {
+        "En": {
+            "Header": "Secondary Piston"
+        },
+        "Jp": {
+            "Header": "二次ピストン"
+        }
+    },
+    "PrimaryPistonS": {
+        "En": {
+            "Header": "Primary Piston"
+        },
+        "Jp": {
+            "Header": "プライマリピストン"
+        }
+    },
+    "PrimaryReturnSpringS": {
+        "En": {
+            "Header": "Primary Return Spring"
+        },
+        "Jp": {
+            "Header": "プライマリーリターンスプリング"
+        }
+    },
+    "SecondaryReturnSpringS": {
+        "En": {
+            "Header": "Secondary Return Spring"
+        },
+        "Jp": {
+            "Header": "二次リターンスプリング"
+        }
+    },
+    "SealS": {
+        "En": {
+            "Header": "Seal"
+        },
+        "Jp": {
+            "Header": "シール"
+        }
+    }
+}
