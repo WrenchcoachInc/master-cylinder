@@ -61,7 +61,7 @@ function servo_mestre(scene, renderer, appData) {
   // States
   asset.loaded.connect(() => {
     // Load and add point cloud to scene
-		switch (appData.stage) {
+    switch (appData.stage) {
     case 'learning':{
       setupStates(scene, asset, renderer, appData);
       break;

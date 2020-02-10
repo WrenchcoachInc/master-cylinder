@@ -114,7 +114,14 @@ function setupSimulator(scene, asset, renderer, appData) {
     
     cutAwayGroup.getParameter('CutAwayEnabled').setValue(true);  
     asset.getParameter('CutPlaneDist').setValue(0.0)
-    // asset.getParameter('CutPlaneDist').setValue(-0.2)
+    // asset.getParameter('CutPlaneDist').setValue(-0.1)
+
+    // let value = -0.2;
+    // setInterval(()=> {
+    //   value += 0.001;
+    //         const smooth_t = Math.smoothStep(0.0, 1.0, value)
+    //   asset.getParameter('CutPlaneDist').setValue(value)
+    // }, 10)
   }
 
   const primaryColor = new ZeaEngine.Color('#FBC02D');
@@ -129,7 +136,6 @@ function setupSimulator(scene, asset, renderer, appData) {
     
     scene.getRoot().addChild(target0LocatorItem);
   }
-
   const arcSlider = new appData.UX.ArcSlider("BrakePedalSlider");
   const xfo = new ZeaEngine.Xfo();
   xfo.tr.set(0.0, 0.123, 0.038)

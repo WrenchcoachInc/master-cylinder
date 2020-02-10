@@ -15,7 +15,6 @@ function loadAsset(scene) {
   
   // scene.root.addChild(asset);
   // return asset;
-  
   // https://www.quadratec.com/p/mopar/brake-master-cylinder-booster-jk-dana-60-axle-P5160050
   // https://righttorisesuperpac.org/symptoms-of-a-bad-brake-booster/
 
@@ -46,6 +45,7 @@ function loadAsset(scene) {
     asset.addChild(blackRubberGroup);
   }
 
+  
   const whitePlasticGroup = new ZeaEngine.Group('whitePlasticGroup');
   {
     const material = new ZeaEngine.Material('whitePlastic');
@@ -114,21 +114,11 @@ function loadAsset(scene) {
     asset.addChild(blackMetalGroup);
   }
 
+  // asset.addEventListener('loaded', () => {
   asset.loaded.connect(() => {
     // asset.traverse((item, depth)=>{
     //   console.log(item.getPath())
     // })
-    
-    whitePlasticGroup.resolveItems([
-      [".", "SJ Cilindro MESTRE", "tanque_fluido"]
-    ]);
-
-    yellowPlasticGroup.resolveItems([
-      [".", "SJ Cilindro MESTRE", "1.1"],
-      [".", "SJ Cilindro MESTRE", "1.2"],
-      [".", "SJ Cilindro MESTRE", "1.3"],
-      [".", "SJ Cilindro MESTRE", "bucha_freio"]
-    ]);
       
     blackPlasticGroup.resolveItems([
       [".", "SJ Cilindro MESTRE", "tampa_tanque"],
@@ -147,6 +137,17 @@ function loadAsset(scene) {
       [".", "bucha_vacuo"], // Booster seal
     ]);
     
+
+    whitePlasticGroup.resolveItems([
+      [".", "SJ Cilindro MESTRE", "tanque_fluido"]
+    ]);
+
+    yellowPlasticGroup.resolveItems([
+      [".", "SJ Cilindro MESTRE", "1.1"],
+      [".", "SJ Cilindro MESTRE", "1.2"],
+      [".", "SJ Cilindro MESTRE", "1.3"],
+      [".", "SJ Cilindro MESTRE", "bucha_freio"]
+    ]);
       
     shinyMetalGroup.resolveItems([
       [".", "mola12"],//  Big spring
@@ -185,6 +186,8 @@ function loadAsset(scene) {
     ]);
 
   });
+
+
   scene.root.addChild(asset);
   return asset;
 }
