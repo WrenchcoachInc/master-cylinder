@@ -1,7 +1,7 @@
 ﻿import { Vec3, Quat, Xfo, EulerAngles, Group, Material, Color } from '../libs/zea-engine/dist/index.esm.js'
 import { GLCADPass, CADAsset } from '../libs/zea-cad/dist/index.rawimport.js'
 
-function loadAsset(scene) {
+function loadAsset() {
   const asset = new CADAsset()
   const xfo = new Xfo()
   xfo.ori.setFromEulerAngles(new EulerAngles(0.0, Math.PI * -0.5, 0, 'ZXY'))
@@ -13,8 +13,8 @@ function loadAsset(scene) {
   asset.getParameter('GlobalXfo').setValue(xfo)
   asset.getParameter('DataFilePath').setValue('data/servo_mestre.zcad')
 
-  // scene.root.addChild(asset);
-  // return asset;
+  // return asset
+
   // https://www.quadratec.com/p/mopar/brake-master-cylinder-booster-jk-dana-60-axle-P5160050
   // https://righttorisesuperpac.org/symptoms-of-a-bad-brake-booster/
 
@@ -145,7 +145,7 @@ function loadAsset(scene) {
       ['.', 'SJ Cilindro MESTRE.1', 'gaxeta'],
       ['.', 'SJ Cilindro MESTRE.1', 'secundaria'],
       ['.', 'SJ Cilindro MESTRE.1', 'secundaria.1'],
-      ['.', 'SJ Cilindro MESTRE.1', 'Bucha_tanque'], // Rubber seals to top reservoir
+      ['.', 'SJ Cilindro MESTRE.1', 'primario'], // Rubber seals to top reservoir
       ['.', 'SJ Cilindro MESTRE.1', 'secundario'], // Rubber seals to top reservoir
       ['.', 'SJ Cilindro MESTRE.1', 'anel_borracha'],
       ['.', 'filtro_ar'],
@@ -163,9 +163,9 @@ function loadAsset(scene) {
     ])
 
     shinyMetalGroup.resolveItems([
-      ['.', 'mola12'], //  Big spring
-      ['.', 'SJ Cilindro MESTRE.1', 'mola2'], //  Big spring
-      ['.', 'SJ Cilindro MESTRE.1', 'mola1'],
+      ['.', 'mola12.1'], //  Big spring
+      ['.', 'SJ Cilindro MESTRE.1', 'mola2.1'], //  Big spring
+      ['.', 'SJ Cilindro MESTRE.1', 'mola1.1'],
       ['.', 'disco_dinamico'], // Booster ram.
       ['.', 'Pedal_de freio.1'], // Brake pedal
 
@@ -173,7 +173,7 @@ function loadAsset(scene) {
       ['.', 'SJ Cilindro MESTRE.1', 'porca_m6.1'],
       ['.', 'Part1.1'],
       ['.', 'SJ Cilindro MESTRE.1', 'porca_m6'],
-      ['.', 'mola11'],
+      ['.', 'mola11.1'],
     ])
 
     darkGreyMetalGroup.resolveItems([
@@ -197,7 +197,6 @@ function loadAsset(scene) {
     ])
   })
 
-  scene.root.addChild(asset)
   return asset
 }
 

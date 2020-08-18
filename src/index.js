@@ -28,6 +28,7 @@ const scene = new Scene()
 const renderer = new GLRenderer(document.getElementById('viewport'))
 
 const cadPass = new GLCADPass()
+cadPass.setShaderPreprocessorValue('#define ENABLE_PBR')
 renderer.addPass(cadPass, PassType.OPAQUE)
 renderer.setScene(scene)
 renderer.resumeDrawing()
@@ -40,60 +41,62 @@ const language = urlParams.get('language')
 if (language) {
   labelManager.setLanguage(language)
 }
+labelManager.loadLibrary('servo_mestre.labels', './data/servo_mestre.labels')
 
 const position = new Vec3({ x: 0.86471, y: 0.87384, z: 0.18464 })
 const target = new Vec3({ x: 0, y: 0.00913, z: -0.03154 })
 renderer.getViewport().getCamera().setPositionAndTarget(position, target)
 scene.getSettings().getParameter('BackgroundColor').setValue(new Color(0.8, 0.8, 0.8))
 
-const envMap = new EnvMap('HDR_029_Sky_Cloudy_Ref')
+const envMap = new EnvMap('envMap')
 envMap.getParameter('FilePath').setFilepath('./data/HDR_029_Sky_Cloudy_Ref.vlenv')
 scene.setEnvMap(envMap)
-renderer.displayEnvironment = false
+// renderer.displayEnvironment = false
 
 //////////////////////////
 // Asset
 import loadAsset from './loadAsset.js'
-const asset = loadAsset(scene)
+const asset = loadAsset()
+scene.root.addChild(asset)
+
+import setupLearning from './setupLearning.js'
+import setupIdentification from './setupIdentification.js'
+import setupSimulator from './setupSimulator.js'
+// import setupAssembly from './setupAssembly.js'
 
 asset.on('loaded', () => {
   renderer.frameAll()
   // const xfo = renderer.getViewport().getCamera().getGlobalXfo()
   // const target = renderer.getViewport().getCamera().getTargetPostion()
   // console.log(xfo.toString(), target.toString())
+
+  ////////////////////////////////////////////////////////////////
+  // States
+
+  const appData = {}
+
+  // asset.on('loaded', () => {
+  //   const stage = urlParams.get('stage')
+  //   switch (stage) {
+  //     case 'learning': {
+  // setupLearning(scene, asset, renderer, appData)
+  //       break
+  //     }
+  //     case 'identification': {
+  // setupIdentification(scene, asset, renderer, appData)
+  //       break
+  //     }
+  //     case 'simulation': {
+  setupSimulator(scene, asset, renderer, appData)
+  //       break
+  //     }
+  //     case 'assembly': {
+  //       setupAssembly(scene, asset, renderer, appData)
+  //       break
+  //     }
+  //   }
+  // })
 })
-
-////////////////////////////////////////////////////////////////
-// States
-
-// import setupStates from './setupLearning.js'
-// setupStates(scene, asset, renderer, appData)
-// import setupIdentification from './setupIdentification.js'
-// import setupSimulator from './setupSimulator.js'
-// import setupAssembly from './setupAssembly.js'
-
-// asset.on('loaded', () => {
-//   const stage = urlParams.get('stage')
-//   switch (stage) {
-//     case 'learning': {
-//       setupStates(scene, asset, renderer, appData)
-//       break
-//     }
-//     case 'identification': {
-//       setupIdentification(scene, asset, renderer, appData)
-//       break
-//     }
-//     case 'simulation': {
-//       setupSimulator(scene, asset, renderer, appData)
-//       break
-//     }
-//     case 'assembly': {
-//       setupAssembly(scene, asset, renderer, appData)
-//       break
-//     }
-//   }
-// })
-
 // if (document.location.hostname == 'localhost') {
 //   let currSel
 //   const togglePreProc = (name) => {

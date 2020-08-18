@@ -100,23 +100,23 @@ function setupLearning(scene, asset, renderer) {
   cutAwayGroup.getParameter('CutPlaneDist').setValue(-0.2)
   asset.addChild(cutAwayGroup)
 
-  asset.on('loaded', () => {
-    cutAwayGroup.resolveItems([
-      ['.', 'bacia_1.1'],
-      ['.', 'bacia_2.1'],
-      ['.', 'SJ Cilindro MESTRE.1', 'cilindro_mestre.1'],
-      ['.', 'SJ Cilindro MESTRE.1', 'tanque_fluido.1'],
-      ['.', 'SJ Cilindro MESTRE.1', 'Part1.13'],
-      // ['.', 'SJ Cilindro MESTRE.1', 'secundario.1'],
-      // ['.', 'SJ Cilindro MESTRE.1', 'bucha_freio.1'],
-      ['.', 'SJ Cilindro MESTRE.1', '1'],
-      ['.', 'SJ Cilindro MESTRE.1', '1.2', '1'],
-      ['.', 'disco_dinamico'],
-      ['.', 'Part1.8'],
-      ['.', 'Symmetry of Part1.8.2'],
-      // ['.', 'SJ Cilindro MESTRE.1', 'anel_borracha.1'],
-    ])
-  })
+  // asset.on('loaded', () => {
+  cutAwayGroup.resolveItems([
+    ['.', 'bacia_1.1'],
+    ['.', 'bacia_2.1'],
+    ['.', 'SJ Cilindro MESTRE.1', 'cilindro_mestre.1'],
+    ['.', 'SJ Cilindro MESTRE.1', 'tanque_fluido.1'],
+    ['.', 'SJ Cilindro MESTRE.1', 'Part1.13'],
+    // ['.', 'SJ Cilindro MESTRE.1', 'secundario.1'],
+    // ['.', 'SJ Cilindro MESTRE.1', 'bucha_freio.1'],
+    ['.', 'SJ Cilindro MESTRE.1', '1'],
+    ['.', 'SJ Cilindro MESTRE.1', '1.2', '1'],
+    ['.', 'disco_dinamico'],
+    ['.', 'Part1.8'],
+    ['.', 'Symmetry of Part1.8.2'],
+    // ['.', 'SJ Cilindro MESTRE.1', 'anel_borracha.1'],
+  ])
+  // })
   cutAwayGroup.getParameter('CutAwayEnabled').setValue(true)
   cutAwayGroup.getParameter('CutPlaneDist').setValue(0.0)
 
@@ -144,31 +144,30 @@ function setupLearning(scene, asset, renderer) {
   // boosterAndPedalGroup.getParameter('Highlighted').setValue(true);
   asset.addChild(boosterAndPedalGroup)
 
-  asset.on('loaded', () => {
-    boosterAndPedalGroup.resolveItems([
-      ['.', 'bacia_1.1'],
-      ['.', 'bacia_2.1'],
-      ['.', 'disco_dinamico'],
-      ['.', 'Part1'],
-      ['.', 'Symmetry of Part1'],
-      ['.', 'Symmetry of Part1.8.2'],
-      ['.', 'Symmetry of Symmetry of Part1'],
-      ['.', 'haste_acionamento'],
-      ['.', 'Pedal_de freio'],
-      ['.', 'mola11'],
-      ['.', 'mola12'],
-      ['.', 'filtro_ar'],
-      ['.', 'bucha_vacuo'],
-      ['.', 'tubo_vacuo'],
-      ['.', 'haste_vacuo'],
-      ['.', 'bucha_vedada'],
-      ['.', 'prato'],
-      ['.', 'paraf_m6'],
-      ['.', 'SJ Cilindro MESTRE.1', 'porca_m6.1'],
-      ['.', 'Part1.1'],
-      ['.', 'SJ Cilindro MESTRE.1', 'porca_m6'],
-    ])
-  })
+  // asset.on('loaded', () => {
+  boosterAndPedalGroup.resolveItems([
+    ['.', 'bacia_1.1'],
+    ['.', 'bacia_2.1'],
+    ['.', 'disco_dinamico'],
+    ['.', 'Part1.8'],
+    ['.', 'Symmetry of Part1.8.1'],
+    ['.', 'Symmetry of Part1.8.2'],
+    ['.', 'Symmetry of Symmetry of Part1.8.1.1'],
+    ['.', 'haste_acionamento'],
+    ['.', 'Pedal_de freio.1'],
+    ['.', 'mola11.1'],
+    ['.', 'mola12.1'],
+    ['.', 'filtro_ar'],
+    ['.', 'bucha_vacuo.1'],
+    ['.', 'tubo_vacuo.1'],
+    ['.', 'haste_vacuo'],
+    ['.', 'bucha_vedada'],
+    ['.', 'prato.1'],
+    ['.', 'paraf_m6.1'],
+    ['.', 'SJ Cilindro MESTRE.1', 'Part1.13'],
+    ['.', 'SJ Cilindro MESTRE.1', 'tanque_fluido.1'],
+  ])
+  // })
 
   const explodedPartsOp = new ExplodePartsOperator('ExplodeParts')
   asset.addChild(explodedPartsOp)
@@ -322,36 +321,36 @@ function setupLearning(scene, asset, renderer) {
   asset.addChild(stateMachine)
 
   {
-    const Stage1State = new State('Stage1State')
+    const stage1State = new State('stage1State')
 
     ///////////////
     // State Events
     const nextStateKeyPressed = new KeyPressedEvent('NextStateKey')
-    Stage1State.addStateEvent(nextStateKeyPressed)
+    stage1State.addStateEvent(nextStateKeyPressed)
     nextStateKeyPressed.getParameter('Key').setValue('>')
 
-    const SwitchToStage1State = new SwitchState()
-    nextStateKeyPressed.addChild(SwitchToStage1State)
-    SwitchToStage1State.getParameter('TargetState').setValue('Stage2State')
+    const switchToStage2State = new SwitchState()
+    nextStateKeyPressed.addChild(switchToStage2State)
+    switchToStage2State.getParameter('TargetState').setValue('stage2State')
 
     ///////////////////////////////
     // State Activation Actions
 
-    const ShowBoosterAndPedal = new SetParameterValue()
-    Stage1State.addActivationAction(ShowBoosterAndPedal)
-    ShowBoosterAndPedal.getParameter('InterpTime').setValue(0.0)
-    ShowBoosterAndPedal.setParam(boosterAndPedalGroup.getParameter('Visible'))
-    ShowBoosterAndPedal.getParameter('Value').setValue(true)
+    const showBoosterAndPedal = new SetParameterValue()
+    stage1State.addActivationAction(showBoosterAndPedal)
+    showBoosterAndPedal.getParameter('InterpTime').setValue(0.0)
+    showBoosterAndPedal.setParam(boosterAndPedalGroup.getParameter('Visible'))
+    showBoosterAndPedal.getParameter('Value').setValue(true)
 
     const setCameraPositionAndTarget = new SetCameraPositionAndTarget()
-    Stage1State.addActivationAction(setCameraPositionAndTarget)
+    stage1State.addActivationAction(setCameraPositionAndTarget)
     setCameraPositionAndTarget.getParameter('Camera').setValue(renderer.getViewport().getCamera())
     setCameraPositionAndTarget.getParameter('InterpTime').setValue(1.0)
     setCameraPositionAndTarget.getParameter('CameraPos').setValue(new Vec3({ x: 0.57098, y: -0.02572, z: 0.10281 }))
     setCameraPositionAndTarget.getParameter('CameraTarget').setValue(new Vec3({ x: 0.00207, y: -0.03195, z: 0.03585 }))
 
     const EnableLabels = new SetParameterValue()
-    // Stage1State.addActivationAction(EnableLabels)
+    // stage1State.addActivationAction(EnableLabels)
     setCameraPositionAndTarget.addChild(EnableLabels)
     EnableLabels.getParameter('InterpTime').setValue(0.0)
     EnableLabels.setParam(state1Labels.visibleParam)
@@ -360,62 +359,63 @@ function setupLearning(scene, asset, renderer) {
     ///////////////////////////////
     // State Deactivation Actions
     const DisableLabels = new SetParameterValue()
-    Stage1State.addDeactivationAction(DisableLabels)
+    stage1State.addDeactivationAction(DisableLabels)
     DisableLabels.getParameter('InterpTime').setValue(0.0)
     DisableLabels.setParam(state1Labels.visibleParam)
     DisableLabels.getParameter('Value').setValue(false)
 
-    stateMachine.addState(Stage1State)
+    stateMachine.addState(stage1State)
   }
 
   {
-    const Stage2State = new State('Stage2State')
+    const stage2State = new State('stage2State')
 
     ///////////////
     // State Events
     const nextStateKeyPressed = new KeyPressedEvent()
-    Stage2State.addStateEvent(nextStateKeyPressed)
+    stage2State.addStateEvent(nextStateKeyPressed)
     nextStateKeyPressed.getParameter('Key').setValue('>')
+
     const SwitchToStage3State = new SwitchState()
     nextStateKeyPressed.addChild(SwitchToStage3State)
-    SwitchToStage3State.getParameter('TargetState').setValue('Stage3State')
+    SwitchToStage3State.getParameter('TargetState').setValue('stage3State')
 
     const prevStateKeyPressed = new KeyPressedEvent()
-    Stage2State.addStateEvent(prevStateKeyPressed)
+    stage2State.addStateEvent(prevStateKeyPressed)
     prevStateKeyPressed.getParameter('Key').setValue('<')
-    const SwitchToStage1State = new SwitchState()
-    prevStateKeyPressed.addChild(SwitchToStage1State)
-    SwitchToStage1State.getParameter('TargetState').setValue('Stage1State')
+    const switchTostage1State = new SwitchState()
+    prevStateKeyPressed.addChild(switchTostage1State)
+    switchTostage1State.getParameter('TargetState').setValue('stage1State')
 
     ///////////////////////////////
     // State Activation Actions
-    const HideBoosterAndPedal = new SetParameterValue()
-    Stage2State.addActivationAction(HideBoosterAndPedal)
-    HideBoosterAndPedal.getParameter('InterpTime').setValue(0.0)
-    HideBoosterAndPedal.setParam(boosterAndPedalGroup.getParameter('Visible'))
-    HideBoosterAndPedal.getParameter('Value').setValue(false)
+    const hideBoosterAndPedal = new SetParameterValue()
+    stage2State.addActivationAction(hideBoosterAndPedal)
+    hideBoosterAndPedal.getParameter('InterpTime').setValue(0.0)
+    hideBoosterAndPedal.setParam(boosterAndPedalGroup.getParameter('Visible'))
+    hideBoosterAndPedal.getParameter('Value').setValue(false)
 
     const EnableCutaway = new SetParameterValue('EnableCutaway')
-    Stage2State.addActivationAction(EnableCutaway)
+    stage2State.addActivationAction(EnableCutaway)
     EnableCutaway.getParameter('InterpTime').setValue(0.0)
     EnableCutaway.setParam(cutAwayGroup.getParameter('CutAwayEnabled'))
     EnableCutaway.getParameter('Value').setValue(true)
 
     const CutAwayMasterCylinder = new SetParameterValue('CutAwayMasterCylinder')
-    Stage2State.addActivationAction(CutAwayMasterCylinder)
+    stage2State.addActivationAction(CutAwayMasterCylinder)
     CutAwayMasterCylinder.getParameter('InterpTime').setValue(1.0)
     CutAwayMasterCylinder.setParam(cutAwayGroup.getParameter('CutPlaneDist'))
     CutAwayMasterCylinder.getParameter('Value').setValue(0.0)
 
     const setCameraPositionAndTarget = new SetCameraPositionAndTarget()
-    Stage2State.addActivationAction(setCameraPositionAndTarget)
+    stage2State.addActivationAction(setCameraPositionAndTarget)
     setCameraPositionAndTarget.getParameter('Camera').setValue(renderer.getViewport().getCamera())
     setCameraPositionAndTarget.getParameter('InterpTime').setValue(1.0)
     setCameraPositionAndTarget.getParameter('CameraPos').setValue(new Vec3({ x: 0.31458, y: -0.17705, z: 0.09557 }))
     setCameraPositionAndTarget.getParameter('CameraTarget').setValue(new Vec3({ x: 0.00902, y: -0.16664, z: 0.07171 }))
 
     const EnableLabels = new SetParameterValue('EnableLabels')
-    // Stage2State.addActivationAction(EnableLabels)
+    // stage2State.addActivationAction(EnableLabels)
     setCameraPositionAndTarget.addChild(EnableLabels)
     EnableLabels.getParameter('InterpTime').setValue(0.0)
     EnableLabels.setParam(state2Labels.visibleParam)
@@ -424,54 +424,54 @@ function setupLearning(scene, asset, renderer) {
     ///////////////////////////////
     // State Deactivation Actions
     const DisableLabels = new SetParameterValue('DisableLabels')
-    Stage2State.addDeactivationAction(DisableLabels)
+    stage2State.addDeactivationAction(DisableLabels)
     DisableLabels.getParameter('InterpTime').setValue(0.0)
     DisableLabels.setParam(state2Labels.visibleParam)
     DisableLabels.getParameter('Value').setValue(false)
 
     const DisableCutaway = new SetParameterValue('DisableCutaway')
-    Stage2State.addDeactivationAction(DisableCutaway)
+    stage2State.addDeactivationAction(DisableCutaway)
     DisableCutaway.getParameter('InterpTime').setValue(0.0)
     DisableCutaway.setParam(cutAwayGroup.getParameter('CutAwayEnabled'))
     DisableCutaway.getParameter('Value').setValue(false)
 
     const UnCutAwayMasterCylinder = new SetParameterValue('UnCutAwayMasterCylinder')
-    Stage2State.addDeactivationAction(UnCutAwayMasterCylinder)
+    stage2State.addDeactivationAction(UnCutAwayMasterCylinder)
     UnCutAwayMasterCylinder.getParameter('InterpTime').setValue(0.5)
     UnCutAwayMasterCylinder.setParam(cutAwayGroup.getParameter('CutPlaneDist'))
     UnCutAwayMasterCylinder.getParameter('Value').setValue(-0.2)
 
-    stateMachine.addState(Stage2State)
+    stateMachine.addState(stage2State)
   }
 
   {
-    const Stage3State = new State('Stage3State')
+    const stage3State = new State('stage3State')
 
     ///////////////
     // State Events
     const prevStateKeyPressed = new KeyPressedEvent('PrevStateKey')
-    Stage3State.addStateEvent(prevStateKeyPressed)
+    stage3State.addStateEvent(prevStateKeyPressed)
     prevStateKeyPressed.getParameter('Key').setValue('<')
-    const SwitchToStage1State = new SwitchState()
-    prevStateKeyPressed.addChild(SwitchToStage1State)
-    SwitchToStage1State.getParameter('TargetState').setValue('Stage2State')
+    const switchTostage1State = new SwitchState()
+    prevStateKeyPressed.addChild(switchTostage1State)
+    switchTostage1State.getParameter('TargetState').setValue('stage2State')
 
     ///////////////////////////////
     // State Activation Actions
     const Explode = new SetParameterValue('Explode')
-    Stage3State.addActivationAction(Explode)
+    stage3State.addActivationAction(Explode)
     Explode.getParameter('InterpTime').setValue(2.0)
     Explode.setParam(explodedPartsOp.getParameter('Explode'))
     Explode.getParameter('Value').setValue(1.0)
 
     // const EnableLabels = new SetParameterValue('EnableLabels')
-    // Stage3State.addActivationAction(EnableLabels)
+    // stage3State.addActivationAction(EnableLabels)
     // EnableLabels.getParameter('InterpTime').setValue(0.0)
     // EnableLabels.setParam(state2Labels.visibleParam)
     // EnableLabels.getParameter('Value').setValue(true)
 
     const setCameraPositionAndTarget = new SetCameraPositionAndTarget()
-    Stage3State.addActivationAction(setCameraPositionAndTarget)
+    stage3State.addActivationAction(setCameraPositionAndTarget)
     setCameraPositionAndTarget.getParameter('Camera').setValue(renderer.getViewport().getCamera())
     setCameraPositionAndTarget.getParameter('InterpTime').setValue(1.0)
     setCameraPositionAndTarget.getParameter('CameraPos').setValue(new Vec3({ x: 0.40108, y: 0.47376, z: 0.27948 }))
@@ -480,23 +480,23 @@ function setupLearning(scene, asset, renderer) {
     ///////////////////////////////
     // State Deactivation Actions
 
-    const UnExplode = new SetParameterValue('UnExplode')
-    Stage3State.addDeactivationAction(UnExplode)
-    UnExplode.getParameter('InterpTime').setValue(0.5)
-    UnExplode.setParam(explodedPartsOp.getParameter('Explode'))
-    UnExplode.getParameter('Value').setValue(0.0)
+    const unExplode = new SetParameterValue('unExplode')
+    stage3State.addDeactivationAction(unExplode)
+    unExplode.getParameter('InterpTime').setValue(0.5)
+    unExplode.setParam(explodedPartsOp.getParameter('Explode'))
+    unExplode.getParameter('Value').setValue(0.0)
 
     // const DisableLabels = new SetParameterValue('DisableLabels')
-    // Stage3State.addDeactivationAction(DisableLabels)
+    // stage3State.addDeactivationAction(DisableLabels)
     // DisableLabels.getParameter('InterpTime').setValue(0.0)
     // DisableLabels.setParam(state2Labels.visibleParam)
     // DisableLabels.getParameter('Value').setValue(false)
 
-    stateMachine.addState(Stage3State)
+    stateMachine.addState(stage3State)
   }
 
-  stateMachine.setInitialState('Stage1State')
-  stateMachine.activateState('Stage1State', false)
+  stateMachine.setInitialState('stage1State')
+  stateMachine.activateState('stage1State', false)
 }
 
 export default setupLearning
