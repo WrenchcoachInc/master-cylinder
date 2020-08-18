@@ -1,73 +1,38 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>Master Cylinder</title>
-        <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-    </head>
-    <body text-align: left;>
-        <script src="node_modules/@zeainc/zea-engine/dist/zea-engine.js"></script>
-        <script src="node_modules/@zeainc/zea-cad/dist/zea-cad.js"></script>
-        <script src="node_modules/@zeainc/zea-ux/dist/zea-ux.js"></script>
-        <script src="node_modules/@wrenchcoach/dom-label/dist/dom-label.js"></script>
-        <script src="node_modules/@wrenchcoach/socket-and-plug/dist/socket-and-plug.js"></script>
-        <script src="node_modules/@wrenchcoach/locator-item/dist/locator-item.js"></script>
-        
-        <!-- Load the tools scripts. -->
-        <script type="text/javascript" src="js/loadAsset.js"></script>
-        <script type="text/javascript" src="js/setupStates.js"></script>
-        <script type="text/javascript" src="js/setupIdentification.js"></script>   
-        <script type="text/javascript" src="js/setupSimulator.js"></script>
-        <script type="text/javascript" src="js/setupAssembly.js"></script>
-        <script type="text/javascript" src="js/start.js"></script>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Master Cylinder</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+  </head>
+  <body text-align: left;>
+    <!-- <script src="node_modules/@zeainc/zea-engine/dist/zea-engine.js"></script>
+    <script src="node_modules/@zeainc/zea-cad/dist/zea-cad.js"></script>
+    <script src="node_modules/@zeainc/zea-ux/dist/zea-ux.js"></script>
+    <script src="node_modules/@wrenchcoach/dom-label/dist/dom-label.js"></script>
+    <script src="node_modules/@wrenchcoach/socket-and-plug/dist/socket-and-plug.js"></script>
+    <script src="node_modules/@wrenchcoach/locator-item/dist/locator-item.js"></script> -->
 
-        <div id='viewport'></div>
+    <!-- Load the tools scripts. -->
+    <!-- <script type="text/javascript" src="js/loadAsset.js"></script>
+    <script type="text/javascript" src="js/setupStates.js"></script>
+    <script type="text/javascript" src="js/setupIdentification.js"></script>
+    <script type="text/javascript" src="js/setupSimulator.js"></script>
+    <script type="text/javascript" src="js/setupAssembly.js"></script>
+    <script type="text/javascript" src="js/start.js"></script> -->
 
-        <style>
-    #viewport {
+    <div id="viewport"></div>
+
+    <style>
+      #viewport {
         width: '100%';
         height: '100%';
         position: 'fixed';
         top: 0;
         left: 0;
-    }
-        </style>
-        
-        <script type="text/javascript">
+      }
+    </style>
 
-const rootURL = window.location.href.split('?')[0]
-const resources = {
-    'data': {
-        type: 'folder',
-        name: "data",
-        id: 'data'
-    },
-    'servo_mestre': {
-        name: "servo_mestre.zcad",
-        url: rootURL+"/data/servo_mestre.zcad",
-        id: 'servo_mestre',
-        parent: 'data'
-    },
-    'labels': {
-        name: "servo_mestre.labels",
-        url: rootURL+"/data/servo_mestre.labels",
-        id: 'servo_mestre',
-        parent: 'data'
-    },
-    'envmaps': {
-        type: 'folder',
-        name: "HDREnvironments",
-        id: 'envmaps'
-    },
-    'envmap': {
-        name: "HDR_029_Sky_Cloudy_Ref.vlenv",
-        url: rootURL+"/HDREnvironments/HDR_029_Sky_Cloudy_Ref.vlenv",
-        id: 'servo_mestre',
-        parent: 'envmaps'
-    }
-}
-vlmain(document.getElementById('viewport'), resources);
-
-        </script> 
-    </body>
+    <script type="module" src="./src/index.js"></script>
+  </body>
 </html>
